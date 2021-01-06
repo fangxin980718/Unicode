@@ -1,0 +1,13 @@
+/*body {*/
+/*    background-image: url(../Img/004.jpg);*/
+/*    !*overflow: scroll;*!*/
+/*    overflow-x: hidden;*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: center*/
+/*}*/
+body {
+    overflow: scroll;
+    overflow-x: hidden;
+    /*overflow-Y: hidden;*/
+    background: url("../Img/5.jpg");
+}
