@@ -1,7 +1,7 @@
 //Unicode转中文
 function ascii2zh() {
     var s = document.getElementById("ascii").value;
-    if (s==""){
+    if (s == "") {
         alert("Unicode 文本框没有值！")
     }
     s = reconvert(s);
@@ -11,7 +11,7 @@ function ascii2zh() {
 //中文转Unicode
 function zh2ascii() {
     var s = document.getElementById("zh").value;
-    if (s==""){
+    if (s == "") {
         alert("中文文本框没有值！")
     }
     s = unicode(s);
@@ -36,7 +36,12 @@ function reconvert(str) {
 function unicode(str) {
     var value = '';
     for (var i = 0; i < str.length; i++) {
-        value += '\\u' + left_zero_4(parseInt(str.charCodeAt(i)).toString(16));
+        var ischinese = isChinese(str[i]);//是否是中文字符
+        if (ischinese) {
+            value += '\\u' + left_zero_4(parseInt(str.charCodeAt(i)).toString(16));
+        } else {
+            value += str[i];
+        }
     }
     return value;
 }
@@ -48,5 +53,11 @@ function left_zero_4(str) {
         }
     }
     return str;
+}
+
+function isChinese(temp) {
+    var re = /[^\u4E00-\u9FA5]/;
+    if (re.test(temp)) return false;
+    return true;
 }
 
